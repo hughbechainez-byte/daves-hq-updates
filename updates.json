@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 10,
-  "latestVersionName": "1.0.0",
-  "apkUrl": "https://litter.catbox.moe/71j3k7.apk",
-  "moduleUrl": "https://litter.catbox.moe/xdkq4a.zip",
-  "sha256Apk": "d89e20dcd6c17714dc030598eff6c0ec12c200369b645461203ed4ab353a903f",
-  "sha256Module": "876ff21e095373c3011c1d24c34cde0077c2c0d9947fea40067a23636cca321e",
-  "notes": "v1.0 adds one-button Update Everything: download APK and module, flash the module, then open the APK installer."
+  "latestVersionCode": 11,
+  "latestVersionName": "1.1.0",
+  "apkUrl": "https://litter.catbox.moe/2l51sp.apk",
+  "moduleUrl": "https://litter.catbox.moe/junkqz.zip",
+  "sha256Apk": "917378ae1deab84a1f111e9297a7f5220c7c584b2bf7f185015373ccf47926d9",
+  "sha256Module": "d808dd35e4802fbe6486ab278f4f7a865d6fc206fc07863c81cedba18400b3d6",
+  "notes": "v1.1 shows version names instead of raw version codes and detects when the APK is current but the Magisk module is behind."
 }
