@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 13,
-  "latestVersionName": "1.3.0",
-  "apkUrl": "https://litter.catbox.moe/zm6yl9.apk",
-  "moduleUrl": "https://litter.catbox.moe/5pjkpw.zip",
-  "sha256Apk": "5dab89abe5912b5d4bc27bda6eed95aff1fd7f732bb329fd7b640fd543796732",
-  "sha256Module": "a0cbb100a25abba296fb7ec8e8ff9041f63a54bcbc777b769926fa0fc3174176",
-  "notes": "v1.3 adds a live update-stage ticker for grabbing files, downloading, verifying, installing the APK, flashing the Magisk module, and finishing."
+  "latestVersionCode": 14,
+  "latestVersionName": "1.4.0",
+  "apkUrl": "https://litter.catbox.moe/6qvf8s.apk",
+  "moduleUrl": "https://litter.catbox.moe/9qx0pw.zip",
+  "sha256Apk": "4aa82ed8c62d2a82c5b2d4d5201a0a649dd63ce1737db0e4c28c2e94867abf7d",
+  "sha256Module": "33c69b6f3b46e97a6b5a8f8adbdff79463658b09bb4b0b7fb13826b7dd8e4b54",
+  "notes": "v1.4 adds a Not now option for Battery Saver suggestions and short plain-English descriptions for preinstalled/native apps in the battery drain list."
 }
