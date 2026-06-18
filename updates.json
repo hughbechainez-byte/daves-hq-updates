@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 14,
-  "latestVersionName": "1.4.0",
-  "apkUrl": "https://litter.catbox.moe/6qvf8s.apk",
-  "moduleUrl": "https://litter.catbox.moe/9qx0pw.zip",
-  "sha256Apk": "4aa82ed8c62d2a82c5b2d4d5201a0a649dd63ce1737db0e4c28c2e94867abf7d",
-  "sha256Module": "33c69b6f3b46e97a6b5a8f8adbdff79463658b09bb4b0b7fb13826b7dd8e4b54",
-  "notes": "v1.4 adds a Not now option for Battery Saver suggestions and short plain-English descriptions for preinstalled/native apps in the battery drain list."
+  "latestVersionCode": 15,
+  "latestVersionName": "1.5.0",
+  "apkUrl": "https://litter.catbox.moe/yw2ydg.apk",
+  "moduleUrl": "https://litter.catbox.moe/xtld4f.zip",
+  "sha256Apk": "1a45f060d24143415295c592da99a70a488d57ec884227e4477e99b17b43c68e",
+  "sha256Module": "9aa11e18ccb7ae324466e4ecaeb6b39a8dd9bd22808e9c5c33937efa5f62b752",
+  "notes": "v1.5 hides drain-list rows after close/hibernate, changes Remove to hide-for-now, adds refresh and advanced 60-minute auto close/hibernate controls, and adds rooted runtime permission controls."
 }
