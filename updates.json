@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 8,
-  "latestVersionName": "0.8.0",
-  "apkUrl": "https://litter.catbox.moe/xitbsl.apk",
-  "moduleUrl": "https://litter.catbox.moe/ltms97.zip",
-  "sha256Apk": "5ae110f47b9562ad401add0cd46a0e686219942b27ecaa44484c9ac733989720",
-  "sha256Module": "89ed7da624f1e820413b30e476f87667b22e8c06381883fbab0a89f968246357",
-  "notes": "v0.8 adds a dynamic Battery Saver Checklist ordered by current drain signals, plus manifest-based update checks."
+  "latestVersionCode": 9,
+  "latestVersionName": "0.9.0",
+  "apkUrl": "https://litter.catbox.moe/0qzh67.apk",
+  "moduleUrl": "https://litter.catbox.moe/paq4td.zip",
+  "sha256Apk": "9865fa33ff459ade6c30650f10f0efd01b2b18cbb4a83a270bb5d86c9a1e5148",
+  "sha256Module": "88eb5ddc43b8776c91e3b895858567eac9fbdc2aee6904c596e79bdf9938d7da",
+  "notes": "v0.9 adds in-app Magisk module download and root flashing with a reboot prompt, so updates can be completed from the phone."
 }
