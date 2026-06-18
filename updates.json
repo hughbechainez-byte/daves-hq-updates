@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 11,
-  "latestVersionName": "1.1.0",
-  "apkUrl": "https://litter.catbox.moe/2l51sp.apk",
-  "moduleUrl": "https://litter.catbox.moe/junkqz.zip",
-  "sha256Apk": "917378ae1deab84a1f111e9297a7f5220c7c584b2bf7f185015373ccf47926d9",
-  "sha256Module": "d808dd35e4802fbe6486ab278f4f7a865d6fc206fc07863c81cedba18400b3d6",
-  "notes": "v1.1 shows version names instead of raw version codes and detects when the APK is current but the Magisk module is behind."
+  "latestVersionCode": 12,
+  "latestVersionName": "1.2.0",
+  "apkUrl": "https://litter.catbox.moe/xys4ii.apk",
+  "moduleUrl": "https://litter.catbox.moe/awfl7b.zip",
+  "sha256Apk": "39ed2f8a3436e66cfe763c3e440f4a52e9a1c3cf95560b96e9e0a9e404f12bcd",
+  "sha256Module": "7b806036988ad192d212e7e87dbacd3710dfb094fca91429ca3c67855375a3c7",
+  "notes": "v1.2 clarifies Battery Saver Checklist actions, hides completed suggestions for 60 minutes, fixes dim-screen behavior, and replaces the system feed line chart with vertical CPU/GPU/RAM usage bars."
 }
