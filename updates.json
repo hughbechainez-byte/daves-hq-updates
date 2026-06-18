@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 9,
-  "latestVersionName": "0.9.0",
-  "apkUrl": "https://litter.catbox.moe/0qzh67.apk",
-  "moduleUrl": "https://litter.catbox.moe/paq4td.zip",
-  "sha256Apk": "9865fa33ff459ade6c30650f10f0efd01b2b18cbb4a83a270bb5d86c9a1e5148",
-  "sha256Module": "88eb5ddc43b8776c91e3b895858567eac9fbdc2aee6904c596e79bdf9938d7da",
-  "notes": "v0.9 adds in-app Magisk module download and root flashing with a reboot prompt, so updates can be completed from the phone."
+  "latestVersionCode": 10,
+  "latestVersionName": "1.0.0",
+  "apkUrl": "https://litter.catbox.moe/71j3k7.apk",
+  "moduleUrl": "https://litter.catbox.moe/xdkq4a.zip",
+  "sha256Apk": "d89e20dcd6c17714dc030598eff6c0ec12c200369b645461203ed4ab353a903f",
+  "sha256Module": "876ff21e095373c3011c1d24c34cde0077c2c0d9947fea40067a23636cca321e",
+  "notes": "v1.0 adds one-button Update Everything: download APK and module, flash the module, then open the APK installer."
 }
