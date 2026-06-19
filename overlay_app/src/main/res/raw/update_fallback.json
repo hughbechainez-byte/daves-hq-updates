@@ -7,7 +7,7 @@
     "versionName": "1.0.9",
     "versionCode": 36,
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay.apk",
-    "sha256": "dec0652d58bfa87a9ac01b7c7eab807c1ecbee0f40040929ae9656d9fe5d11f2"
+    "sha256": ""
   },
   "module": {
     "versionName": "1.0.9",
@@ -15,5 +15,5 @@
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay_module.zip",
     "sha256": "c008884a5c403ade7cce2f4bd7b191eb11a10372e8082d2ab280a59f39bc4390"
   },
-  "notes": "Publish this file to your GitHub Pages site and update the sha256 fields for each release."
+  "notes": "Bundled fallback manifest used when the network manifest cannot be reached."
 }
