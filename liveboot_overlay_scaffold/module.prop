@@ -1,6 +1,6 @@
 id=brobro_boot_overlay
 name=BroBro Boot Overlay
-version=1.0.10
-versionCode=1010
+version=1.0.11
+versionCode=1011
 author=Codex
 description=Custom app_process boot overlay with settings GUI, without patching framework-res.apk or replacing bootanimation.zip

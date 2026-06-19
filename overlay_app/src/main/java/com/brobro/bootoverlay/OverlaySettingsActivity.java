@@ -55,8 +55,9 @@ public class OverlaySettingsActivity extends Activity {
     private static final String PREFS = "overlay_settings";
     private static final String APP_CONFIG_FILE = "overlay_config.txt";
     private static final String APP_LOGO_FILE = "logo.png";
+    private static final String LOGO_GENERATION_SIGNATURE_VERSION = "3";
     private static final String FIXED_LOGO_TEXT = "Dave OS";
-    private static final String APK_VERSION = "1.0.10 (37)";
+    private static final String APK_VERSION = "1.0.11 (38)";
     private static final String EXPECTED_UPDATE_PROJECT = "BroBro Boot Overlay";
     private static final String EXPECTED_UPDATE_PACKAGE = "com.brobro.bootoverlay";
     private static final String DEFAULT_MANIFEST_URL = "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/updates.json";
@@ -81,6 +82,7 @@ public class OverlaySettingsActivity extends Activity {
     private EditText logoBackgroundColor;
     private EditText logoBoxBorderColor;
     private EditText progressColor;
+    private EditText progressBorderColor;
     private EditText livebootTextColor;
     private EditText livebootTextLines;
     private EditText livebootFinalLines;
@@ -130,6 +132,10 @@ public class OverlaySettingsActivity extends Activity {
     private SeekBar logoBoxHeight;
     private SeekBar logoBoxBorderWidth;
     private SeekBar logoTextDepth;
+    private SeekBar progressWidth;
+    private SeekBar progressHeight;
+    private SeekBar progressBorderWidth;
+    private SeekBar progressPixelation;
     private SeekBar foregroundEffectStrength;
     private SeekBar foregroundEffectOpacity;
     private SeekBar livebootEffectStrength;
@@ -150,6 +156,7 @@ public class OverlaySettingsActivity extends Activity {
     private SeekBar wallpaperLogoAlpha;
     private SeekBar livebootAlpha;
     private SeekBar livebootSize;
+    private CheckBox progressShowPercent;
     private BootOverlayView preview;
     private BootOverlayView stickyPreview;
     private CheckBox previewFullscreen;
@@ -181,6 +188,10 @@ public class OverlaySettingsActivity extends Activity {
     private TextView logoBoxHeightValue;
     private TextView logoBoxBorderValue;
     private TextView logoTextDepthValue;
+    private TextView progressWidthValue;
+    private TextView progressHeightValue;
+    private TextView progressBorderWidthValue;
+    private TextView progressPixelationValue;
     private TextView updateSummary;
     private TextView presetModeValue;
     private LinearLayout styleTab;
@@ -216,7 +227,7 @@ public class OverlaySettingsActivity extends Activity {
         root.setBackgroundColor(Color.rgb(12, 16, 22));
         root.setPadding(0, topInsetPx(), 0, 0);
 
-        TextView title = label("BroBro Boot Overlay v1.0.10", 24, true);
+        TextView title = label("BroBro Boot Overlay v1.0.11", 24, true);
         title.setPadding(dp(18), dp(16), dp(18), dp(10));
         root.addView(title);
 
@@ -229,22 +240,11 @@ public class OverlaySettingsActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 dp(240)
         ));
-        Button previewRefresh = button("Restart Preview Animation");
+        Button previewRefresh = button("Refresh Preview");
         previewRefresh.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View view) { updatePreview(); }
         });
         previewDock.addView(previewRefresh);
-        previewFullscreen = checkbox("Full-screen preview", false);
-        previewFullscreen.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View view) {
-                if (previewFullscreen.isChecked()) {
-                    showFullscreenPreview();
-                } else {
-                    dismissFullscreenPreview();
-                }
-            }
-        });
-        previewDock.addView(previewFullscreen);
         root.addView(previewDock);
 
         LinearLayout tabs = new LinearLayout(this);
@@ -437,9 +437,25 @@ public class OverlaySettingsActivity extends Activity {
         logoTextDepthValue = label("Logo text depth: 4 px", 12, false);
         logoGroup.addView(logoTextDepthValue);
 
-        LinearLayout progressGroup = collapsibleGroup(styleTab, "Progress", false);
+        LinearLayout progressGroup = collapsibleGroup(styleTab, "Progress Bar", false);
+        progressGroup.addView(label("Adjust the boot progress bar independently from the rest of the screen.", 12, false));
         progressDuration = spinner(progressGroup, "Duration", new String[]{"15s", "20s", "25s", "30s"}, "25s");
-        progressColor = colorField(progressGroup, "Progress color", "#FFFFD447");
+        progressColor = colorField(progressGroup, "Bar color", "#FFFFD447");
+        progressBorderColor = colorField(progressGroup, "Border color", "#B4FFFFFF");
+        progressWidth = slider(progressGroup, "Bar width", 20, 100, 68);
+        progressWidthValue = label("Bar width: 68%", 12, false);
+        progressGroup.addView(progressWidthValue);
+        progressHeight = slider(progressGroup, "Bar height", 2, 40, 18);
+        progressHeightValue = label("Bar height: 18 px", 12, false);
+        progressGroup.addView(progressHeightValue);
+        progressBorderWidth = slider(progressGroup, "Border width", 0, 12, 2);
+        progressBorderWidthValue = label("Border width: 2 px", 12, false);
+        progressGroup.addView(progressBorderWidthValue);
+        progressPixelation = slider(progressGroup, "Pixelate bar", 0, 100, 0);
+        progressPixelationValue = label("Pixelation: 0%", 12, false);
+        progressGroup.addView(progressPixelationValue);
+        progressShowPercent = checkbox("Show percentage label", false);
+        progressGroup.addView(progressShowPercent);
     }
 
     private void buildFeedTab() {
@@ -663,6 +679,7 @@ public class OverlaySettingsActivity extends Activity {
         gradientColor2.setText(prefs.getString("gradientColor2", "#FFFFD447"));
         gradientColor3.setText(prefs.getString("gradientColor3", "#FF24C06F"));
         progressColor.setText(prefs.getString("progressColor", "#FFFFD447"));
+        progressBorderColor.setText(prefs.getString("progressBorderColor", "#B4FFFFFF"));
         logoFillColor.setText(prefs.getString("logoFillColor", "#FFFFFFFF"));
         logoBackgroundColor.setText(prefs.getString("logoBackgroundColor", "#78003B46"));
         logoBoxBorderColor.setText(prefs.getString("logoBoxBorderColor", "#FFFFFFFF"));
@@ -718,6 +735,10 @@ public class OverlaySettingsActivity extends Activity {
         setSlider(logoBoxHeight, prefs.getInt("logoBoxHeightPct", 74));
         setSlider(logoBoxBorderWidth, prefs.getInt("logoBoxBorderWidthPx", 4));
         setSlider(logoTextDepth, prefs.getInt("logoTextDepthPx", 4));
+        setSlider(progressWidth, prefs.getInt("progressWidthPct", 68));
+        setSlider(progressHeight, prefs.getInt("progressHeightPx", 18));
+        setSlider(progressBorderWidth, prefs.getInt("progressBorderWidthPx", 2));
+        setSlider(progressPixelation, prefs.getInt("progressPixelation", 0));
         setSlider(foregroundEffectStrength, prefs.getInt("foregroundEffectStrength", 18));
         setSlider(foregroundEffectOpacity, prefs.getInt("foregroundEffectOpacity", 220));
         setSlider(livebootEffectStrength, prefs.getInt("livebootEffectStrength", 18));
@@ -740,12 +761,14 @@ public class OverlaySettingsActivity extends Activity {
         livebootEnabled.setChecked(prefs.getBoolean("livebootEnabled", true));
         livebootFinalLinesEnabled.setChecked(prefs.getBoolean("livebootFinalLinesEnabled", false));
         wallpaperLogoEnabled.setChecked(prefs.getBoolean("wallpaperLogoEnabled", true));
+        progressShowPercent.setChecked(prefs.getBoolean("progressShowPercent", false));
         gradientReverse.setChecked(prefs.getBoolean("gradientReverse", false));
         updatePresetModeValue(prefs.getString("bootProfileMode", "manual"));
         syncProfileNameField(selectedProfileSlot());
         updateGradientControlLabels();
         updateEffectsControlLabels();
         updateLogoControlLabels();
+        updateProgressControlLabels();
         loading = false;
         reloadFromModule(false);
     }
@@ -757,6 +780,7 @@ public class OverlaySettingsActivity extends Activity {
                 .putString("gradientColor2", gradientColor2.getText().toString().trim())
                 .putString("gradientColor3", gradientColor3.getText().toString().trim())
                 .putString("progressColor", progressColor.getText().toString().trim())
+                .putString("progressBorderColor", progressBorderColor.getText().toString().trim())
                 .putString("logoFillColor", logoFillColor.getText().toString().trim())
                 .putString("logoBackgroundColor", logoBackgroundColor.getText().toString().trim())
                 .putString("logoBoxBorderColor", logoBoxBorderColor.getText().toString().trim())
@@ -813,6 +837,10 @@ public class OverlaySettingsActivity extends Activity {
                 .putInt("logoBoxHeightPct", sliderValue(logoBoxHeight))
                 .putInt("logoBoxBorderWidthPx", sliderValue(logoBoxBorderWidth))
                 .putInt("logoTextDepthPx", sliderValue(logoTextDepth))
+                .putInt("progressWidthPct", sliderValue(progressWidth))
+                .putInt("progressHeightPx", sliderValue(progressHeight))
+                .putInt("progressBorderWidthPx", sliderValue(progressBorderWidth))
+                .putInt("progressPixelation", sliderValue(progressPixelation))
                 .putInt("foregroundEffectStrength", sliderValue(foregroundEffectStrength))
                 .putInt("foregroundEffectOpacity", sliderValue(foregroundEffectOpacity))
                 .putInt("livebootEffectStrength", sliderValue(livebootEffectStrength))
@@ -835,6 +863,7 @@ public class OverlaySettingsActivity extends Activity {
                 .putBoolean("livebootEnabled", livebootEnabled.isChecked())
                 .putBoolean("livebootFinalLinesEnabled", livebootFinalLinesEnabled.isChecked())
                 .putBoolean("wallpaperLogoEnabled", wallpaperLogoEnabled.isChecked())
+                .putBoolean("progressShowPercent", progressShowPercent.isChecked())
                 .putBoolean("gradientReverse", gradientReverse.isChecked())
                 .putString(profileNameKey(selectedProfileSlot()), bootProfileName == null ? "" : bootProfileName.getText().toString().trim())
                 .apply();
@@ -925,6 +954,10 @@ public class OverlaySettingsActivity extends Activity {
         config.crtFlicker = sliderValue(crtFlicker);
         config.progressBar = true;
         config.progressColor = OverlayConfig.parseColor(progressColor.getText().toString(), config.progressColor);
+        config.progressBorderColor = OverlayConfig.parseColor(
+                progressBorderColor.getText().toString(),
+                config.progressBorderColor
+        );
         config.progressMode = "time_estimated";
         config.progressDurationMs = durationMs();
         config.maxDurationMs = 120000L;
@@ -932,9 +965,12 @@ public class OverlaySettingsActivity extends Activity {
         config.bootanimSyncEnabled = true;
         config.bootanimEndHoldMs = 0L;
         config.progressPositionPct = 82;
-        config.progressWidthPct = 68;
-        config.progressHeightPx = 18;
+        config.progressWidthPct = sliderValue(progressWidth);
+        config.progressHeightPx = sliderValue(progressHeight);
+        config.progressBorderWidthPx = sliderValue(progressBorderWidth);
+        config.progressPixelation = sliderValue(progressPixelation);
         config.progressRounded = true;
+        config.progressShowPercent = progressShowPercent.isChecked();
         config.livebootTextEnabled = livebootEnabled.isChecked();
         config.livebootTextDisplayMode = selected(livebootDisplayMode);
         config.livebootTextMode = selected(livebootFeedMode);
@@ -969,6 +1005,7 @@ public class OverlaySettingsActivity extends Activity {
         gradientColor2.setText(OverlayConfig.toColorString(config.gradientColor2));
         gradientColor3.setText(OverlayConfig.toColorString(config.gradientColor3));
         progressColor.setText(OverlayConfig.toColorString(config.progressColor));
+        progressBorderColor.setText(OverlayConfig.toColorString(config.progressBorderColor));
         logoFillColor.setText(OverlayConfig.toColorString(config.logoFillColor));
         logoBackgroundColor.setText(OverlayConfig.toColorString(config.logoBackgroundColor));
         logoBoxBorderColor.setText(OverlayConfig.toColorString(config.logoBoxBorderColor));
@@ -978,6 +1015,10 @@ public class OverlaySettingsActivity extends Activity {
         setSpinner(backgroundMode, config.backgroundMode);
         setSpinner(logoFontMode, labelForFontMode(config.logoFontMode));
         setSpinner(progressDuration, durationLabel(config.progressDurationMs));
+        setSlider(progressWidth, config.progressWidthPct);
+        setSlider(progressHeight, config.progressHeightPx);
+        setSlider(progressBorderWidth, config.progressBorderWidthPx);
+        setSlider(progressPixelation, config.progressPixelation);
         setSpinner(livebootDisplayMode, config.livebootTextDisplayMode);
         setSpinner(livebootFeedMode, config.livebootTextMode);
         setSpinner(livebootRevealMode, config.livebootTextRevealMode);
@@ -1016,6 +1057,7 @@ public class OverlaySettingsActivity extends Activity {
         setSlider(logoBoxHeight, config.logoBoxHeightPct);
         setSlider(logoBoxBorderWidth, config.logoBoxBorderWidthPx);
         setSlider(logoTextDepth, config.logoTextDepthPx);
+        progressShowPercent.setChecked(config.progressShowPercent);
         setSlider(foregroundEffectStrength, config.foregroundEffectStrength);
         setSlider(foregroundEffectOpacity, config.foregroundEffectOpacity);
         setSlider(livebootEffectStrength, config.livebootEffectStrength);
@@ -1045,6 +1087,7 @@ public class OverlaySettingsActivity extends Activity {
         updateGradientControlLabels();
         updateEffectsControlLabels();
         updateLogoControlLabels();
+        updateProgressControlLabels();
         loading = false;
         if (stickyPreview != null) {
             stickyPreview.setConfig(currentConfig());
@@ -1936,6 +1979,7 @@ public class OverlaySettingsActivity extends Activity {
 
     private boolean generateLogoFromText() {
         String signature = selected(logoFontMode)
+                + "|" + LOGO_GENERATION_SIGNATURE_VERSION
                 + "|" + sliderValue(logoSize)
                 + "|" + logoFillColor.getText().toString().trim()
                 + "|" + logoBackgroundColor.getText().toString().trim()
@@ -2224,6 +2268,7 @@ public class OverlaySettingsActivity extends Activity {
         logoBackgroundColor.addTextChangedListener(watcher);
         logoBoxBorderColor.addTextChangedListener(watcher);
         progressColor.addTextChangedListener(watcher);
+        progressBorderColor.addTextChangedListener(watcher);
         livebootTextColor.addTextChangedListener(watcher);
         livebootTextLines.addTextChangedListener(watcher);
         livebootFinalLines.addTextChangedListener(watcher);
@@ -2277,6 +2322,7 @@ public class OverlaySettingsActivity extends Activity {
                 updateGradientControlLabels();
                 updateEffectsControlLabels();
                 updateLogoControlLabels();
+                updateProgressControlLabels();
                 if (fromUser) {
                     updatePreview();
                 }
@@ -2309,6 +2355,10 @@ public class OverlaySettingsActivity extends Activity {
         logoBoxHeight.setOnSeekBarChangeListener(sliderListener);
         logoBoxBorderWidth.setOnSeekBarChangeListener(sliderListener);
         logoTextDepth.setOnSeekBarChangeListener(sliderListener);
+        progressWidth.setOnSeekBarChangeListener(sliderListener);
+        progressHeight.setOnSeekBarChangeListener(sliderListener);
+        progressBorderWidth.setOnSeekBarChangeListener(sliderListener);
+        progressPixelation.setOnSeekBarChangeListener(sliderListener);
         foregroundEffectStrength.setOnSeekBarChangeListener(sliderListener);
         foregroundEffectOpacity.setOnSeekBarChangeListener(sliderListener);
         livebootEffectStrength.setOnSeekBarChangeListener(sliderListener);
@@ -2328,6 +2378,9 @@ public class OverlaySettingsActivity extends Activity {
         wallpaperLogoAlpha.setOnSeekBarChangeListener(sliderListener);
         livebootAlpha.setOnSeekBarChangeListener(sliderListener);
         livebootSize.setOnSeekBarChangeListener(sliderListener);
+        progressShowPercent.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) { updatePreview(); }
+        });
     }
 
     private EditText field(LinearLayout parent, String label, String defaultValue) {
@@ -2508,6 +2561,21 @@ public class OverlaySettingsActivity extends Activity {
         }
         if (logoTextDepthValue != null && logoTextDepth != null) {
             logoTextDepthValue.setText("Logo text depth: " + sliderValue(logoTextDepth) + " px");
+        }
+    }
+
+    private void updateProgressControlLabels() {
+        if (progressWidthValue != null && progressWidth != null) {
+            progressWidthValue.setText("Bar width: " + sliderValue(progressWidth) + "%");
+        }
+        if (progressHeightValue != null && progressHeight != null) {
+            progressHeightValue.setText("Bar height: " + sliderValue(progressHeight) + " px");
+        }
+        if (progressBorderWidthValue != null && progressBorderWidth != null) {
+            progressBorderWidthValue.setText("Border width: " + sliderValue(progressBorderWidth) + " px");
+        }
+        if (progressPixelationValue != null && progressPixelation != null) {
+            progressPixelationValue.setText("Pixelation: " + sliderValue(progressPixelation) + "%");
         }
     }
 
