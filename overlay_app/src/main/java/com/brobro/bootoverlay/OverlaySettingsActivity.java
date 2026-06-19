@@ -57,7 +57,7 @@ public class OverlaySettingsActivity extends Activity {
     private static final String APP_LOGO_FILE = "logo.png";
     private static final String LOGO_GENERATION_SIGNATURE_VERSION = "3";
     private static final String FIXED_LOGO_TEXT = "Dave OS";
-    private static final String APK_VERSION = "1.0.11 (38)";
+    private static final String APK_VERSION = "1.0.12 (39)";
     private static final String EXPECTED_UPDATE_PROJECT = "BroBro Boot Overlay";
     private static final String EXPECTED_UPDATE_PACKAGE = "com.brobro.bootoverlay";
     private static final String DEFAULT_MANIFEST_URL = "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/updates.json";
@@ -227,7 +227,7 @@ public class OverlaySettingsActivity extends Activity {
         root.setBackgroundColor(Color.rgb(12, 16, 22));
         root.setPadding(0, topInsetPx(), 0, 0);
 
-        TextView title = label("BroBro Boot Overlay v1.0.11", 24, true);
+        TextView title = label("BroBro Boot Overlay v1.0.12", 24, true);
         title.setPadding(dp(18), dp(16), dp(18), dp(10));
         root.addView(title);
 
@@ -674,96 +674,96 @@ public class OverlaySettingsActivity extends Activity {
     private void load() {
         loading = true;
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
-        moduleId.setText(prefs.getString("moduleId", "brobro_boot_overlay"));
-        gradientColor1.setText(prefs.getString("gradientColor1", "#FF003B46"));
-        gradientColor2.setText(prefs.getString("gradientColor2", "#FFFFD447"));
-        gradientColor3.setText(prefs.getString("gradientColor3", "#FF24C06F"));
-        progressColor.setText(prefs.getString("progressColor", "#FFFFD447"));
-        progressBorderColor.setText(prefs.getString("progressBorderColor", "#B4FFFFFF"));
-        logoFillColor.setText(prefs.getString("logoFillColor", "#FFFFFFFF"));
-        logoBackgroundColor.setText(prefs.getString("logoBackgroundColor", "#78003B46"));
-        logoBoxBorderColor.setText(prefs.getString("logoBoxBorderColor", "#FFFFFFFF"));
-        livebootTextColor.setText(prefs.getString("livebootTextColor", "#99B7FFF7"));
-        livebootTextLines.setText(prefs.getString("livebootTextLines", defaultLivebootLines()));
-        livebootFinalLines.setText(prefs.getString("livebootFinalLines", defaultFinalLines()));
-        importedFontPath = prefs.getString("importedFontPath", "");
-        setSpinner(gradientPattern, prefs.getString("gradientPattern", "linear"));
-        setSpinner(gradientAnimation, prefs.getString("gradientAnimation", "drift"));
-        setSpinner(backgroundMode, prefs.getString("backgroundMode", "animated_gradient"));
-        setSpinner(logoFontMode, prefs.getString("logoFontMode", "Pixel Retro"));
-        setSpinner(progressDuration, prefs.getString("progressDuration", "25s"));
-        setSpinner(livebootDisplayMode, prefs.getString("livebootDisplayMode", "full_screen"));
-        setSpinner(livebootFeedMode, prefs.getString("livebootFeedMode", "logcat_experimental"));
-        setSpinner(livebootRevealMode, prefs.getString("livebootRevealMode", "word"));
-        setSpinner(livebootRevealSpeed, prefs.getString("livebootRevealSpeed", "fast"));
-        setSpinner(livebootSpeed, prefs.getString("livebootSpeed", "medium"));
-        setSpinner(livebootDensity, prefs.getString("livebootDensity", "normal"));
-        setSpinner(livebootFinalLead, prefs.getString("livebootFinalLead", "5s"));
-        setSpinner(foregroundEffectMode, prefs.getString("foregroundEffectMode", "none"));
-        setSpinner(livebootEffectMode, prefs.getString("livebootEffectMode", "none"));
-        setSpinner(backgroundEffectMode, prefs.getString("backgroundEffectMode", "none"));
-        setSpinner(overlayEffectMode, prefs.getString("overlayEffectMode", "none"));
-        setSpinner(crtMode, prefs.getString("crtMode", "soft"));
-        setSpinner(wallpaperLogoPosition, prefs.getString("wallpaperLogoPosition", "center"));
+        moduleId.setText(prefString(prefs, "moduleId", "brobro_boot_overlay"));
+        gradientColor1.setText(prefString(prefs, "gradientColor1", "#FF003B46"));
+        gradientColor2.setText(prefString(prefs, "gradientColor2", "#FFFFD447"));
+        gradientColor3.setText(prefString(prefs, "gradientColor3", "#FF24C06F"));
+        progressColor.setText(prefString(prefs, "progressColor", "#FFFFD447"));
+        progressBorderColor.setText(prefString(prefs, "progressBorderColor", "#B4FFFFFF"));
+        logoFillColor.setText(prefString(prefs, "logoFillColor", "#FFFFFFFF"));
+        logoBackgroundColor.setText(prefString(prefs, "logoBackgroundColor", "#78003B46"));
+        logoBoxBorderColor.setText(prefString(prefs, "logoBoxBorderColor", "#FFFFFFFF"));
+        livebootTextColor.setText(prefString(prefs, "livebootTextColor", "#99B7FFF7"));
+        livebootTextLines.setText(prefString(prefs, "livebootTextLines", defaultLivebootLines()));
+        livebootFinalLines.setText(prefString(prefs, "livebootFinalLines", defaultFinalLines()));
+        importedFontPath = prefString(prefs, "importedFontPath", "");
+        setSpinner(gradientPattern, prefString(prefs, "gradientPattern", "linear"));
+        setSpinner(gradientAnimation, prefString(prefs, "gradientAnimation", "drift"));
+        setSpinner(backgroundMode, prefString(prefs, "backgroundMode", "animated_gradient"));
+        setSpinner(logoFontMode, prefString(prefs, "logoFontMode", "Pixel Retro"));
+        setSpinner(progressDuration, prefString(prefs, "progressDuration", "25s"));
+        setSpinner(livebootDisplayMode, prefString(prefs, "livebootDisplayMode", "full_screen"));
+        setSpinner(livebootFeedMode, prefString(prefs, "livebootFeedMode", "logcat_experimental"));
+        setSpinner(livebootRevealMode, prefString(prefs, "livebootRevealMode", "word"));
+        setSpinner(livebootRevealSpeed, prefString(prefs, "livebootRevealSpeed", "fast"));
+        setSpinner(livebootSpeed, prefString(prefs, "livebootSpeed", "medium"));
+        setSpinner(livebootDensity, prefString(prefs, "livebootDensity", "normal"));
+        setSpinner(livebootFinalLead, prefString(prefs, "livebootFinalLead", "5s"));
+        setSpinner(foregroundEffectMode, prefString(prefs, "foregroundEffectMode", "none"));
+        setSpinner(livebootEffectMode, prefString(prefs, "livebootEffectMode", "none"));
+        setSpinner(backgroundEffectMode, prefString(prefs, "backgroundEffectMode", "none"));
+        setSpinner(overlayEffectMode, prefString(prefs, "overlayEffectMode", "none"));
+        setSpinner(crtMode, prefString(prefs, "crtMode", "soft"));
+        setSpinner(wallpaperLogoPosition, prefString(prefs, "wallpaperLogoPosition", "center"));
         refreshProfileSlotSpinnerLabels();
-        setProfileSlotSelection(prefs.getInt("bootProfileSlot", 1));
+        setProfileSlotSelection(prefInt(prefs, "bootProfileSlot", 1));
         int legacyGradientSpeed = GradientBackgroundRenderer.legacySpeedPercent(
-                prefs.getString("gradientSpeed", "fast")
+                prefString(prefs, "gradientSpeed", "fast")
         );
-        setSlider(gradientSpeedPercent, prefs.getInt("gradientSpeedPercent", legacyGradientSpeed));
-        setSlider(gradientAngle, prefs.getInt("gradientAngleDeg", 45));
-        setSlider(gradientScale, prefs.getInt("gradientScalePercent", 100));
-        setSlider(gradientCenterX, prefs.getInt("gradientCenterXPct", 50));
-        setSlider(gradientCenterY, prefs.getInt("gradientCenterYPct", 50));
-        setSlider(gradientStop2, prefs.getInt("gradientStop2Pct", 36));
-        setSlider(gradientStop3, prefs.getInt("gradientStop3Pct", 70));
-        setSlider(gradientBrightness, prefs.getInt("gradientBrightness", 0));
-        setSlider(gradientExposure, prefs.getInt("gradientExposurePct", 0));
-        setSlider(gradientSaturation, prefs.getInt("gradientSaturationPct", 100));
-        setSlider(gradientContrast, prefs.getInt("gradientContrastPct", 100));
-        setSlider(gradientGamma, prefs.getInt("gradientGammaPct", 100));
-        setSlider(gradientVibrance, prefs.getInt("gradientVibrancePct", 100));
-        setSlider(gradientHueShift, prefs.getInt("gradientHueShiftDeg", 0));
-        setSlider(gradientYellowBoost, prefs.getInt("gradientYellowBoostPct", 0));
-        setSlider(gradientRedBoost, prefs.getInt("gradientRedBoostPct", 0));
-        setSlider(gradientGreenBoost, prefs.getInt("gradientGreenBoostPct", 0));
-        setSlider(gradientBlueBoost, prefs.getInt("gradientBlueBoostPct", 0));
-        setSlider(gradientMotionX, prefs.getInt("gradientMotionXPct", 18));
-        setSlider(gradientMotionY, prefs.getInt("gradientMotionYPct", 12));
-        setSlider(logoSize, prefs.getInt("logoSize", 100));
-        setSlider(logoBoxWidth, prefs.getInt("logoBoxWidthPct", 92));
-        setSlider(logoBoxHeight, prefs.getInt("logoBoxHeightPct", 74));
-        setSlider(logoBoxBorderWidth, prefs.getInt("logoBoxBorderWidthPx", 4));
-        setSlider(logoTextDepth, prefs.getInt("logoTextDepthPx", 4));
-        setSlider(progressWidth, prefs.getInt("progressWidthPct", 68));
-        setSlider(progressHeight, prefs.getInt("progressHeightPx", 18));
-        setSlider(progressBorderWidth, prefs.getInt("progressBorderWidthPx", 2));
-        setSlider(progressPixelation, prefs.getInt("progressPixelation", 0));
-        setSlider(foregroundEffectStrength, prefs.getInt("foregroundEffectStrength", 18));
-        setSlider(foregroundEffectOpacity, prefs.getInt("foregroundEffectOpacity", 220));
-        setSlider(livebootEffectStrength, prefs.getInt("livebootEffectStrength", 18));
-        setSlider(livebootEffectOpacity, prefs.getInt("livebootEffectOpacity", 120));
-        setSlider(backgroundEffectStrength, prefs.getInt("backgroundEffectStrength", 16));
-        setSlider(backgroundEffectOpacity, prefs.getInt("backgroundEffectOpacity", 18));
-        setSlider(overlayEffectStrength, prefs.getInt("overlayEffectStrength", 12));
-        setSlider(screenEffectStrength, prefs.getInt("screenEffectStrength", 0));
-        setSlider(crtStrength, prefs.getInt("crtStrength", 36));
-        setSlider(crtOpacity, prefs.getInt("crtOpacity", 128));
-        setSlider(crtPixelation, prefs.getInt("crtPixelation", 16));
-        setSlider(crtSoftness, prefs.getInt("crtSoftness", 18));
-        setSlider(crtScanlines, prefs.getInt("crtScanlines", 24));
-        setSlider(crtChromatic, prefs.getInt("crtChromatic", 14));
-        setSlider(crtFlicker, prefs.getInt("crtFlicker", 8));
-        setSlider(wallpaperLogoWidth, prefs.getInt("wallpaperLogoWidthPct", 45));
-        setSlider(wallpaperLogoAlpha, prefs.getInt("wallpaperLogoAlpha", 255));
-        setSlider(livebootAlpha, prefs.getInt("livebootAlpha", 120));
-        setSlider(livebootSize, prefs.getInt("livebootSize", 22));
-        livebootEnabled.setChecked(prefs.getBoolean("livebootEnabled", true));
-        livebootFinalLinesEnabled.setChecked(prefs.getBoolean("livebootFinalLinesEnabled", false));
-        wallpaperLogoEnabled.setChecked(prefs.getBoolean("wallpaperLogoEnabled", true));
-        progressShowPercent.setChecked(prefs.getBoolean("progressShowPercent", false));
-        gradientReverse.setChecked(prefs.getBoolean("gradientReverse", false));
-        updatePresetModeValue(prefs.getString("bootProfileMode", "manual"));
+        setSlider(gradientSpeedPercent, prefInt(prefs, "gradientSpeedPercent", legacyGradientSpeed));
+        setSlider(gradientAngle, prefInt(prefs, "gradientAngleDeg", 45));
+        setSlider(gradientScale, prefInt(prefs, "gradientScalePercent", 100));
+        setSlider(gradientCenterX, prefInt(prefs, "gradientCenterXPct", 50));
+        setSlider(gradientCenterY, prefInt(prefs, "gradientCenterYPct", 50));
+        setSlider(gradientStop2, prefInt(prefs, "gradientStop2Pct", 36));
+        setSlider(gradientStop3, prefInt(prefs, "gradientStop3Pct", 70));
+        setSlider(gradientBrightness, prefInt(prefs, "gradientBrightness", 0));
+        setSlider(gradientExposure, prefInt(prefs, "gradientExposurePct", 0));
+        setSlider(gradientSaturation, prefInt(prefs, "gradientSaturationPct", 100));
+        setSlider(gradientContrast, prefInt(prefs, "gradientContrastPct", 100));
+        setSlider(gradientGamma, prefInt(prefs, "gradientGammaPct", 100));
+        setSlider(gradientVibrance, prefInt(prefs, "gradientVibrancePct", 100));
+        setSlider(gradientHueShift, prefInt(prefs, "gradientHueShiftDeg", 0));
+        setSlider(gradientYellowBoost, prefInt(prefs, "gradientYellowBoostPct", 0));
+        setSlider(gradientRedBoost, prefInt(prefs, "gradientRedBoostPct", 0));
+        setSlider(gradientGreenBoost, prefInt(prefs, "gradientGreenBoostPct", 0));
+        setSlider(gradientBlueBoost, prefInt(prefs, "gradientBlueBoostPct", 0));
+        setSlider(gradientMotionX, prefInt(prefs, "gradientMotionXPct", 18));
+        setSlider(gradientMotionY, prefInt(prefs, "gradientMotionYPct", 12));
+        setSlider(logoSize, prefInt(prefs, "logoSize", 100));
+        setSlider(logoBoxWidth, prefInt(prefs, "logoBoxWidthPct", 92));
+        setSlider(logoBoxHeight, prefInt(prefs, "logoBoxHeightPct", 74));
+        setSlider(logoBoxBorderWidth, prefInt(prefs, "logoBoxBorderWidthPx", 4));
+        setSlider(logoTextDepth, prefInt(prefs, "logoTextDepthPx", 4));
+        setSlider(progressWidth, prefInt(prefs, "progressWidthPct", 68));
+        setSlider(progressHeight, prefInt(prefs, "progressHeightPx", 18));
+        setSlider(progressBorderWidth, prefInt(prefs, "progressBorderWidthPx", 2));
+        setSlider(progressPixelation, prefInt(prefs, "progressPixelation", 0));
+        setSlider(foregroundEffectStrength, prefInt(prefs, "foregroundEffectStrength", 18));
+        setSlider(foregroundEffectOpacity, prefInt(prefs, "foregroundEffectOpacity", 220));
+        setSlider(livebootEffectStrength, prefInt(prefs, "livebootEffectStrength", 18));
+        setSlider(livebootEffectOpacity, prefInt(prefs, "livebootEffectOpacity", 120));
+        setSlider(backgroundEffectStrength, prefInt(prefs, "backgroundEffectStrength", 16));
+        setSlider(backgroundEffectOpacity, prefInt(prefs, "backgroundEffectOpacity", 18));
+        setSlider(overlayEffectStrength, prefInt(prefs, "overlayEffectStrength", 12));
+        setSlider(screenEffectStrength, prefInt(prefs, "screenEffectStrength", 0));
+        setSlider(crtStrength, prefInt(prefs, "crtStrength", 36));
+        setSlider(crtOpacity, prefInt(prefs, "crtOpacity", 128));
+        setSlider(crtPixelation, prefInt(prefs, "crtPixelation", 16));
+        setSlider(crtSoftness, prefInt(prefs, "crtSoftness", 18));
+        setSlider(crtScanlines, prefInt(prefs, "crtScanlines", 24));
+        setSlider(crtChromatic, prefInt(prefs, "crtChromatic", 14));
+        setSlider(crtFlicker, prefInt(prefs, "crtFlicker", 8));
+        setSlider(wallpaperLogoWidth, prefInt(prefs, "wallpaperLogoWidthPct", 45));
+        setSlider(wallpaperLogoAlpha, prefInt(prefs, "wallpaperLogoAlpha", 255));
+        setSlider(livebootAlpha, prefInt(prefs, "livebootAlpha", 120));
+        setSlider(livebootSize, prefInt(prefs, "livebootSize", 22));
+        livebootEnabled.setChecked(prefBoolean(prefs, "livebootEnabled", true));
+        livebootFinalLinesEnabled.setChecked(prefBoolean(prefs, "livebootFinalLinesEnabled", false));
+        wallpaperLogoEnabled.setChecked(prefBoolean(prefs, "wallpaperLogoEnabled", true));
+        progressShowPercent.setChecked(prefBoolean(prefs, "progressShowPercent", false));
+        gradientReverse.setChecked(prefBoolean(prefs, "gradientReverse", false));
+        updatePresetModeValue(prefString(prefs, "bootProfileMode", "manual"));
         syncProfileNameField(selectedProfileSlot());
         updateGradientControlLabels();
         updateEffectsControlLabels();
@@ -868,6 +868,51 @@ public class OverlaySettingsActivity extends Activity {
                 .putString(profileNameKey(selectedProfileSlot()), bootProfileName == null ? "" : bootProfileName.getText().toString().trim())
                 .apply();
         writeAppConfigFile();
+    }
+
+    private String prefString(SharedPreferences prefs, String key, String fallback) {
+        Object value = prefs.getAll().get(key);
+        if (value == null) {
+            return fallback;
+        }
+        return String.valueOf(value);
+    }
+
+    private int prefInt(SharedPreferences prefs, String key, int fallback) {
+        Object value = prefs.getAll().get(key);
+        if (value instanceof Number) {
+            return ((Number) value).intValue();
+        }
+        if (value instanceof String) {
+            try {
+                return Integer.parseInt(((String) value).trim());
+            } catch (Exception ignored) {
+            }
+        }
+        if (value instanceof Boolean) {
+            return ((Boolean) value) ? 1 : 0;
+        }
+        return fallback;
+    }
+
+    private boolean prefBoolean(SharedPreferences prefs, String key, boolean fallback) {
+        Object value = prefs.getAll().get(key);
+        if (value instanceof Boolean) {
+            return (Boolean) value;
+        }
+        if (value instanceof Number) {
+            return ((Number) value).intValue() != 0;
+        }
+        if (value instanceof String) {
+            String text = ((String) value).trim();
+            if ("1".equals(text) || "true".equalsIgnoreCase(text) || "yes".equalsIgnoreCase(text)) {
+                return true;
+            }
+            if ("0".equals(text) || "false".equalsIgnoreCase(text) || "no".equalsIgnoreCase(text)) {
+                return false;
+            }
+        }
+        return fallback;
     }
 
     private OverlayConfig currentConfig() {
