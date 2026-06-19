@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 16,
-  "latestVersionName": "1.6.0",
-  "apkUrl": "https://litter.catbox.moe/ldnxi6.apk",
-  "moduleUrl": "https://litter.catbox.moe/4ubdxq.zip",
-  "sha256Apk": "975f7d72450f7b79a291452e0b1e1fa87db40f36cb7ee3d528dbe9210fbba928",
-  "sha256Module": "0571dbbbddf302d6d0b60279a0269b8d157a34ba1d8cadd1ea4a5e8f64cefb31",
-  "notes": "v1.6 adds a live estimated CPU drain-delta meter and a source-current control report that explains when the kernel or charger path prevents pulling more current from the source."
+  "latestVersionCode": 17,
+  "latestVersionName": "1.7.0",
+  "apkUrl": "https://litter.catbox.moe/nqwflv.apk",
+  "moduleUrl": "https://litter.catbox.moe/4pe44w.zip",
+  "sha256Apk": "559e887d14c67e1a4f284d10195edb11ef31d8efbdfc9b3aa548783960cac09e",
+  "sha256Module": "8d94855dd0a2c19c65a61f33a0624157f1a30686be433bd049abacf142bf267e",
+  "notes": "v1.7 cleans up the overall UI with a styled header, consistent buttons, calmer labels, and framed rows for battery drain, saver, and permission lists."
 }
