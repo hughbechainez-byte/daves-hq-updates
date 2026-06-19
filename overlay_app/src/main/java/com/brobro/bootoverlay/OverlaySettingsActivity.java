@@ -245,6 +245,18 @@ public class OverlaySettingsActivity extends Activity {
             @Override public void onClick(View view) { updatePreview(); }
         });
         previewDock.addView(previewRefresh);
+        previewFullscreen = checkbox("Full-screen preview", false);
+        previewFullscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (previewFullscreen.isChecked()) {
+                    showFullscreenPreview();
+                } else {
+                    dismissFullscreenPreview();
+                }
+            }
+        });
+        previewDock.addView(previewFullscreen);
         root.addView(previewDock);
 
         LinearLayout tabs = new LinearLayout(this);
@@ -294,7 +306,7 @@ public class OverlaySettingsActivity extends Activity {
     private void buildStyleTab() {
         LinearLayout gradientGroup = collapsibleGroup(styleTab, "Gradient Studio", false);
         gradientPattern = spinner(gradientGroup, "Pattern", new String[]{"linear", "radial", "sweep", "bands", "radial_bands", "checker", "diamond", "rings"}, "linear");
-        gradientAnimation = spinner(gradientGroup, "Animation", new String[]{"drift", "pulse", "rotate", "wave", "orbit", "shimmer", "glide", "ripple", "breathe", "static"}, "drift");
+        gradientAnimation = spinner(gradientGroup, "Animation", GradientBackgroundRenderer.animationOptions(), "drift");
         gradientColor1 = colorField(gradientGroup, "Color 1", "#FF003B46");
         gradientColor2 = colorField(gradientGroup, "Color 2", "#FFFFD447");
         gradientColor3 = colorField(gradientGroup, "Color 3", "#FF24C06F");
@@ -2463,12 +2475,20 @@ public class OverlaySettingsActivity extends Activity {
 
     private Spinner spinner(LinearLayout parent, String label, String[] values, String selectedValue) {
         parent.addView(label(label, 14, false));
+        LinearLayout box = new LinearLayout(this);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(8), dp(6), dp(8), dp(6));
+        box.setBackgroundColor(Color.rgb(24, 31, 41));
         Spinner spinner = new Spinner(this);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         setSpinner(spinner, selectedValue);
-        parent.addView(spinner);
+        box.addView(spinner, new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        ));
+        parent.addView(box);
         return spinner;
     }
 

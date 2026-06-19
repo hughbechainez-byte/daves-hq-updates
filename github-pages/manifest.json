@@ -7,13 +7,13 @@
     "versionName": "1.0.12",
     "versionCode": 39,
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay.apk",
-    "sha256": "84e0f0d89529f89cb89c63f5cd73598435b573d694a3a91bb4aa72f7b9448b08"
+    "sha256": "eb68a8b95fd1b835a23a4aebef76766e68d2e66f3fca07129156a866987ec13d"
   },
   "module": {
     "versionName": "1.0.12",
     "versionCode": 1012,
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay_module.zip",
-    "sha256": "756b8e154eae0695f8e34a920bae521bc502392865ac498b2001ea2c1a37457e"
+    "sha256": "44ab0cda392775e9105bf5dbf9fce28c34837726e794774763395322a38f9510"
   },
   "notes": "Publish this file to your GitHub Pages site and update the sha256 fields for each release."
 }
