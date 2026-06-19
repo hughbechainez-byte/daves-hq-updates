@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 15,
-  "latestVersionName": "1.5.0",
-  "apkUrl": "https://litter.catbox.moe/yw2ydg.apk",
-  "moduleUrl": "https://litter.catbox.moe/xtld4f.zip",
-  "sha256Apk": "1a45f060d24143415295c592da99a70a488d57ec884227e4477e99b17b43c68e",
-  "sha256Module": "9aa11e18ccb7ae324466e4ecaeb6b39a8dd9bd22808e9c5c33937efa5f62b752",
-  "notes": "v1.5 hides drain-list rows after close/hibernate, changes Remove to hide-for-now, adds refresh and advanced 60-minute auto close/hibernate controls, and adds rooted runtime permission controls."
+  "latestVersionCode": 16,
+  "latestVersionName": "1.6.0",
+  "apkUrl": "https://litter.catbox.moe/ldnxi6.apk",
+  "moduleUrl": "https://litter.catbox.moe/4ubdxq.zip",
+  "sha256Apk": "975f7d72450f7b79a291452e0b1e1fa87db40f36cb7ee3d528dbe9210fbba928",
+  "sha256Module": "0571dbbbddf302d6d0b60279a0269b8d157a34ba1d8cadd1ea4a5e8f64cefb31",
+  "notes": "v1.6 adds a live estimated CPU drain-delta meter and a source-current control report that explains when the kernel or charger path prevents pulling more current from the source."
 }
