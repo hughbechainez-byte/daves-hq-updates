@@ -2,18 +2,18 @@
   "project": "BroBro Boot Overlay",
   "package": "com.brobro.bootoverlay",
   "name": "BroBro Boot Overlay",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "app": {
-    "versionName": "1.0.9",
-    "versionCode": 36,
+    "versionName": "1.0.10",
+    "versionCode": 37,
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay.apk",
     "sha256": ""
   },
   "module": {
-    "versionName": "1.0.9",
-    "versionCode": 1009,
+    "versionName": "1.0.10",
+    "versionCode": 1010,
     "url": "https://hughbechainez-byte.github.io/daves-hq-updates/brobro/releases/brobro_boot_overlay_module.zip",
-    "sha256": "c008884a5c403ade7cce2f4bd7b191eb11a10372e8082d2ab280a59f39bc4390"
+    "sha256": "4a3007d98c04408748a8fd24db82e3e884e181b7baad04503e838cf7290a8c45"
   },
   "notes": "Bundled fallback manifest used when the network manifest cannot be reached."
 }
