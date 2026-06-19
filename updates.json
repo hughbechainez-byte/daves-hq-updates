@@ -1,19 +1,9 @@
 {
-  "project": "BroBro Boot Overlay",
-  "package": "com.brobro.bootoverlay",
-  "name": "BroBro Boot Overlay",
-  "version": "1.0.9",
-  "app": {
-    "versionName": "1.0.9",
-    "versionCode": 36,
-    "url": "https://hughbechainez-byte.github.io/daves-hq-updates/releases/brobro_boot_overlay.apk",
-    "sha256": "6c2989280a6639099a00a60e3e28084e7a497cc3dab7faa73ba29d46d9891fa0"
-  },
-  "module": {
-    "versionName": "1.0.9",
-    "versionCode": 1009,
-    "url": "https://hughbechainez-byte.github.io/daves-hq-updates/releases/brobro_boot_overlay_module.zip",
-    "sha256": "c008884a5c403ade7cce2f4bd7b191eb11a10372e8082d2ab280a59f39bc4390"
-  },
-  "notes": "Publish this file to your GitHub Pages site and update the sha256 fields for each release."
+  "latestVersionCode": 17,
+  "latestVersionName": "1.7.0",
+  "apkUrl": "https://litter.catbox.moe/nqwflv.apk",
+  "moduleUrl": "https://litter.catbox.moe/4pe44w.zip",
+  "sha256Apk": "559e887d14c67e1a4f284d10195edb11ef31d8efbdfc9b3aa548783960cac09e",
+  "sha256Module": "8d94855dd0a2c19c65a61f33a0624157f1a30686be433bd049abacf142bf267e",
+  "notes": "v1.7 cleans up the overall UI with a styled header, consistent buttons, calmer labels, and framed rows for battery drain, saver, and permission lists."
 }
