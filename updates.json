@@ -1,9 +1,9 @@
 {
-  "latestVersionCode": 17,
-  "latestVersionName": "1.7.0",
-  "apkUrl": "https://litter.catbox.moe/nqwflv.apk",
-  "moduleUrl": "https://litter.catbox.moe/4pe44w.zip",
-  "sha256Apk": "559e887d14c67e1a4f284d10195edb11ef31d8efbdfc9b3aa548783960cac09e",
-  "sha256Module": "8d94855dd0a2c19c65a61f33a0624157f1a30686be433bd049abacf142bf267e",
-  "notes": "v1.7 cleans up the overall UI with a styled header, consistent buttons, calmer labels, and framed rows for battery drain, saver, and permission lists."
+  "latestVersionCode": 18,
+  "latestVersionName": "1.8.0",
+  "apkUrl": "https://litter.catbox.moe/g776a2.apk",
+  "moduleUrl": "https://litter.catbox.moe/hiv88p.zip",
+  "sha256Apk": "0306992fcf6e915905bc67c5bfe8b602f71526c9020585b9e7ceea8d1398407d",
+  "sha256Module": "43a806a9dcacacc0744d4e14440ba81a3585c68a4399b95fd20ce8a067b7b652",
+  "notes": "v1.8 trims unsupported controls: higher-than-firmware CPU/charging actions are removed, charging controls disable when the kernel is read-only, GPU bars only appear when real GPU telemetry exists, app deletion wording is gone, and broad all-app permission denial was removed."
 }
